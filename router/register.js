@@ -27,31 +27,31 @@ router.get('/Getsale',(req,res)=>{
         res.status(400).json(err);
     })
 })
-router.post('/sale',(req,res)=>
-{
-    var Sale_Id = req.body.Sale_Id;
-    var date = new Date();
-    console.log(req.body.Sale_Id)
-    var record = new salesdetails({
-        Sale_Id:Sale_Id,
-        Date :date.toDateString()
+// router.post('/sale',(req,res)=>
+// {
+//     var Sale_Id = req.body.Sale_Id;
+//     var date = new Date();
+//     console.log(req.body.Sale_Id)
+//     var record = new salesdetails({
+//         Sale_Id:Sale_Id,
+//         Date :date.toDateString()
            
-    });
-    record.save().then(create=>{
-        res.status(200).json();
-        console.log(create);
-    }).catch(err=>{
-        console.log(err)
-        res.status(400).json("err");
-    })
-    register.findOne({P_name :Sale_Id },(err,data)=>
-    {
-        if (err) throw err;
-        console.log(data);
+//     });
+//     record.save().then(create=>{
+//         res.status(200).json();
+//         console.log(create);
+//     }).catch(err=>{
+//         console.log(err)
+//         res.status(400).json("err");
+//     })
+//     register.findOne({P_name :Sale_Id },(err,data)=>
+//     {
+//         if (err) throw err;
+//         console.log(data);
 
-        res.json(data);
-    })
-})
+//         res.json(data);
+//     })
+// })
 
 
 router.post('/regis',(req,res)=>{
@@ -78,6 +78,29 @@ router.post('/regis',(req,res)=>{
     })
 })
 
+router.post('/post',(req,res)=>{
+    var Date = req.body.Date;
+    var Total = req.body.Total;
+    var Available = req.body.Available;
+    var Sold = req.body.Sold;
+
+   
+    var record = new salesdetails({
+        Date:Date,
+        Total:Total,
+        Available:Available,
+        Sold:Sold,
+        
+        
+    });
+    record.save().then(create=>{
+        res.status(200).json();
+        console.log(create);
+    }).catch(err=>{
+        console.log(err)
+        res.status(400).json("err");
+    })
+})
 
 router.post('/gett',(req,res)=>{
     salesdetails.find({

@@ -3,13 +3,25 @@ var schema = mongoose.Schema;
 
 var SalesSchema = new schema({
   
-    Sale_Id : {
-        type:String,
-        required:true,
+    // Sale_Id : {
+    //     type:String,
+    //     required:true,
        
-    },
+    // },
     Date :{
-        type : Date,
+        type : String,
+        required:true
+    },
+    Total:{
+        type:String,
+        required:true
+    },
+    Available:{
+        type:String,
+        required:true
+    },
+    Sold:{
+        type:String,
         required:true
     }
    
