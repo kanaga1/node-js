@@ -91,7 +91,6 @@ router.post('/post',(req,res)=>{
         Available:Available,
         Sold:Sold,
         
-        
     });
     record.save().then(create=>{
         res.status(200).json();
